@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "names": "normal"
+    "description": "normal"
   },
   {
     "id": 2,
-    "names": "premium"
+    "description": "premium"
   }
 ]
