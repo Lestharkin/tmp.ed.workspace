@@ -1,6 +1,8 @@
 package lestharkin.rmi.port;
 
-public interface AppointmentPort {
+import lestharkin.domain.Appointment;
+
+public interface AppointmentRMIPort {
   public Appointment openAppointment();
   public boolean closeAppointment(String id);
   public boolean cancelAppointment(String id);
