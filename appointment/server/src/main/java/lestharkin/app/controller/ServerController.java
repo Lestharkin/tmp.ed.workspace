@@ -4,6 +4,7 @@ import java.util.Date;
 
 import lestharkin.domain.Appointment;
 import lestharkin.domain.Customer;
+import lestharkin.domain.CustomerType;
 import lestharkin.domain.Ticket;
 
 public class ServerController {
@@ -22,7 +23,12 @@ public class ServerController {
   }
 
   public Appointment getAppointmentById(String id) {
-    return null;
+    return new Appointment(
+      id,
+      new Customer("test1", "John", "Doe", "jhon@test.com", new Date(), new CustomerType(0, "Regular")),
+      new Date(),
+      "Test appointment"
+    );
   }
 
   public Appointment[] getAppointments() {
