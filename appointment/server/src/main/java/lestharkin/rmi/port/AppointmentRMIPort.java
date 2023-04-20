@@ -1,11 +1,16 @@
 package lestharkin.rmi.port;
 
-import lestharkin.domain.Appointment;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Date;
 
-public interface AppointmentRMIPort {
-  public Appointment openAppointment();
-  public boolean closeAppointment(String id);
-  public boolean cancelAppointment(String id);
-  public Appointment getAppointmentById(String id);
-  public Appointment[] getAppointmentAll();
+import lestharkin.domain.Appointment;
+import lestharkin.domain.Customer;
+
+public interface AppointmentRMIPort extends Remote {
+  public Appointment openAppointment(Customer customer, Date date, String description) throws RemoteException;
+  public boolean closeAppointment(String id) throws RemoteException;
+  public boolean cancelAppointment(String id) throws RemoteException;
+  public Appointment getAppointmentById(String id) throws RemoteException;
+  public Appointment[] getAppointmentAll() throws RemoteException;
 }
