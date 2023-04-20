@@ -15,8 +15,11 @@ public class AppointmentServer {
             Map<String, String> properties = Environment.getInstance().getVariables();
             AppointmentRMIAdapter appointmentRMIAdapter = new AppointmentRMIAdapter(new ServerController());
             RMIServer appointmentServer = new RMIServer(properties.get("IP"), properties.get("PORT0"), properties.get("SERVICE0"), appointmentRMIAdapter);
+
             RMIServer ticketServer = new RMIServer(properties.get("IP"), properties.get("PORT1"), properties.get("SERVICE1"), appointmentRMIAdapter);
+
             Thread[] threadList = {new Thread(appointmentServer), new Thread(ticketServer)};
+            
             for (Thread thread : threadList) {
                 thread.start();
             }
