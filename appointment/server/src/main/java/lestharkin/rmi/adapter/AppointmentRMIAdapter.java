@@ -22,13 +22,13 @@ public class AppointmentRMIAdapter extends UnicastRemoteObject implements Appoin
   }
 
   @Override
-  public boolean closeAppointment(String id) throws RemoteException {
-    return this.serverController.closeAppointment(id);
+  public boolean closeAppointmentById(String id) throws RemoteException {
+    return this.serverController.closeAppointmentById(id);
   }
 
   @Override
-  public boolean cancelAppointment(String id) throws RemoteException {
-    return this.serverController.cancelAppointment(id);
+  public boolean cancelAppointmentById(String id) throws RemoteException {
+    return this.serverController.cancelAppointmentById(id);
   }
 
   @Override

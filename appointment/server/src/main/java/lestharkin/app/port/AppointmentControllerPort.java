@@ -4,14 +4,13 @@ import java.util.Date;
 
 import lestharkin.domain.Appointment;
 import lestharkin.domain.Customer;
-import lestharkin.domain.Ticket;
 
-public interface AppointmentPort {
+public interface AppointmentControllerPort {
   public Appointment openAppointment(Customer customer, Date date, String description);
 
-  public boolean closeAppointment(String id);
+  public boolean closeAppointmentById(String id);
 
-  public boolean cancelAppointment(String id);
+  public boolean cancelAppointmentById(String id);
 
   public Appointment getAppointmentById(String id);
 

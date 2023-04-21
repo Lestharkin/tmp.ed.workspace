@@ -3,21 +3,22 @@ package lestharkin.app.controller;
 import java.io.Serializable;
 import java.util.Date;
 
+import lestharkin.app.port.AppointmentControllerPort;
 import lestharkin.domain.Appointment;
 import lestharkin.domain.Customer;
 import lestharkin.domain.CustomerType;
 
-public class AppointmentController implements Serializable {
+public class AppointmentController implements AppointmentControllerPort, Serializable {
 
   public Appointment openAppointment(Customer customer, Date date, String description) {
     return null;
   }
 
-  public boolean closeAppointment(String id) {
+  public boolean closeAppointmentById(String id) {
     return false;
   }
 
-  public boolean cancelAppointment(String id) {
+  public boolean cancelAppointmentById(String id) {
     return false;
   }
 
