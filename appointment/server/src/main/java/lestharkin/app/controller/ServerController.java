@@ -1,5 +1,6 @@
 package lestharkin.app.controller;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lestharkin.domain.Appointment;
@@ -7,7 +8,7 @@ import lestharkin.domain.Customer;
 import lestharkin.domain.CustomerType;
 import lestharkin.domain.Ticket;
 
-public class ServerController {
+public class ServerController implements Serializable {
   
 
   public Appointment openAppointment(Customer customer, Date date, String description) {
