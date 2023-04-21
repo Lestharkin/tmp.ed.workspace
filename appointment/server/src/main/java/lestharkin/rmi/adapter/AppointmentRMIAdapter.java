@@ -4,15 +4,15 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 
-import lestharkin.app.controller.ServerController;
+import lestharkin.app.controller.AppointmentController;
 import lestharkin.domain.Appointment;
 import lestharkin.domain.Customer;
 import lestharkin.rmi.port.AppointmentRMIPort;
 
 public class AppointmentRMIAdapter extends UnicastRemoteObject implements AppointmentRMIPort {
-  private ServerController serverController;
+  private AppointmentController serverController;
 
-  public AppointmentRMIAdapter(ServerController serverController) throws RemoteException {
+  public AppointmentRMIAdapter(AppointmentController serverController) throws RemoteException {
     this.serverController = serverController;
   }
 

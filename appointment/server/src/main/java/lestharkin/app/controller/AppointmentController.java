@@ -6,10 +6,8 @@ import java.util.Date;
 import lestharkin.domain.Appointment;
 import lestharkin.domain.Customer;
 import lestharkin.domain.CustomerType;
-import lestharkin.domain.Ticket;
 
-public class ServerController implements Serializable {
-  
+public class AppointmentController implements Serializable {
 
   public Appointment openAppointment(Customer customer, Date date, String description) {
     return null;
@@ -25,22 +23,14 @@ public class ServerController implements Serializable {
 
   public Appointment getAppointmentById(String id) {
     return new Appointment(
-      id,
-      new Customer("test1", "John", "Doe", "jhon@test.com", new Date(), new CustomerType(0, "Regular")),
-      new Date(),
-      "Test appointment"
-    );
+        id,
+        new Customer("test1", "John", "Doe", "jhon@test.com", new Date(), new CustomerType(0, "Regular")),
+        new Date(),
+        "Test appointment");
   }
 
   public Appointment[] getAppointments() {
     return null;
   }
-
-  public Ticket getTicket(String appointmentId) {
-    return null;
-  }
-
-  
-
 
 }

@@ -6,7 +6,7 @@ import lestharkin.domain.Appointment;
 import lestharkin.domain.Customer;
 import lestharkin.domain.Ticket;
 
-public interface ServerPort {
+public interface AppointmentPort {
   public Appointment openAppointment(Customer customer, Date date, String description);
 
   public boolean closeAppointment(String id);
@@ -17,5 +17,4 @@ public interface ServerPort {
 
   public Appointment[] getAppointments();
 
-  public Ticket getTicket(String appointmentId);
 }
