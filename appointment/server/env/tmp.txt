@@ -1,0 +1,9 @@
+public Appointment openAppointment(Appointment appointment) throws RemoteException;
+
+  public Appointment getAppointmentById(String id) throws RemoteException;
+
+  public boolean cancelAppointmentById(String id) throws RemoteException;
+
+  public ILinkedList<Appointment> getAppointments() throws RemoteException;
+
+  public boolean closeAppointmentById(String id) throws RemoteException;

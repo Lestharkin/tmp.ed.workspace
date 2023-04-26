@@ -21,7 +21,7 @@ public class Environment {
   }
   
     private String getPathProperties() {
-      return "/home/lestharkin/Projects/tmp/ed/workspace/appointment/server/env/env.properties";
+      return "D:\\Users\\lesth\\Home\\Projects\\edu\\java\\lectures\\issues\\i007-appointment\\server\\env\\env-win.properties";
     }
   
   private void loadVariables(String path) {
@@ -36,6 +36,8 @@ public class Environment {
       this.variables.put("PORT1", port[1]);
       this.variables.put("SERVICE1", service[1]);
       this.variables.put("DBPATH", (String) properties.get("DBPATH"));
+      this.variables.put("DBDATEFMT", (String) properties.get("DBDATEFMT"));
+      this.variables.put("DBTIMEFMT", (String) properties.get("DBTIMEFMT"));
     } catch (Exception e) {
       Logger.getLogger("Server").log(Level.WARNING, e.getMessage(), e);
     }

@@ -2,43 +2,58 @@ package lestharkin.rmi.adapter;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Date;
 
-import lestharkin.app.controller.AppointmentController;
+import lestharkin.interfaces.ILinkedList;
+import lestharkin.app.port.AppointmentControllerPort;
 import lestharkin.domain.Appointment;
-import lestharkin.domain.Customer;
+import lestharkin.domain.Bean;
 import lestharkin.rmi.port.AppointmentRMIPort;
 
 public class AppointmentRMIAdapter extends UnicastRemoteObject implements AppointmentRMIPort {
-  private AppointmentController serverController;
+  private AppointmentControllerPort appointmentController;
 
-  public AppointmentRMIAdapter(AppointmentController serverController) throws RemoteException {
-    this.serverController = serverController;
+  public AppointmentRMIAdapter(AppointmentControllerPort appointmentController) throws RemoteException {
+    this.appointmentController = appointmentController;
   }
 
   @Override
-  public Appointment openAppointment(Customer customer, Date date, String description) throws RemoteException {
-    return this.serverController.openAppointment(customer, date, description);
+  public Bean<Appointment, String> openAppointment(Appointment appointment) throws RemoteException {
+    if (appointment == null) {
+      return new Bean<>(null, "404");
+    }
+    return appointmentController.openAppointment(appointment);
   }
 
   @Override
-  public boolean closeAppointmentById(String id) throws RemoteException {
-    return this.serverController.closeAppointmentById(id);
+  public Bean<Appointment, String> getAppointmentById(String id) throws RemoteException {
+    if (id == null) {
+      return new Bean<>(null, "404");
+    }
+    return appointmentController.getAppointmentById(id);
   }
 
   @Override
-  public boolean cancelAppointmentById(String id) throws RemoteException {
-    return this.serverController.cancelAppointmentById(id);
+  public Bean<Boolean, String> cancelAppointmentById(String id) throws RemoteException {
+    if (id == null) {
+      return new Bean<>(null, "404");
+    }
+    return appointmentController.cancelAppointmentById(id);
   }
 
   @Override
-  public Appointment getAppointmentById(String id) throws RemoteException {
-    return this.serverController.getAppointmentById(id);
+  public Bean<ILinkedList<Appointment>, String> getAppointments() throws RemoteException {
+    Bean<ILinkedList<Appointment>, String> appointmentBean = appointmentController.getAppointments();
+    if (appointmentBean.getData() == null || appointmentBean.getData().size() < 1) {
+      return new Bean<>(null, "501");
+    }
+    return appointmentBean;
   }
 
   @Override
-  public Appointment[] getAppointmentAll() throws RemoteException {
-    return this.serverController.getAppointments();
+  public Bean<Boolean, String> closeAppointmentById(String id) throws RemoteException {
+    if (id == null) {
+      return new Bean<>(null, "404");
+    }
+    return appointmentController.closeAppointmentById(id);
   }
-  
 }

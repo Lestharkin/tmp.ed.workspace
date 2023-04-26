@@ -2,12 +2,28 @@ package lestharkin.app.controller;
 
 import java.io.Serializable;
 
-import lestharkin.app.port.TicketControllerPort;
 import lestharkin.domain.Ticket;
 
-public class TicketController implements TicketControllerPort, Serializable{
-  public Ticket getTicket(String appointmentId) {
-    return null;
+public class TicketController implements Serializable {
+
+  private static TicketController instance;
+
+  private TicketController() {
   }
 
+  public static TicketController getInstance() {
+    if (instance == null) {
+      instance = new TicketController();
+    }
+    return instance;
+  }
+
+  public Ticket openTicket() {
+    return new Ticket();
+  }
+
+  public boolean closeTicket(String id) {
+    return id == null;
+  }
+  
 }

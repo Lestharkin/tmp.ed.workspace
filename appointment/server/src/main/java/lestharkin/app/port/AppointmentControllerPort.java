@@ -1,19 +1,19 @@
 package lestharkin.app.port;
 
-import java.util.Date;
+import java.io.Serializable;
 
+import lestharkin.interfaces.ILinkedList;
 import lestharkin.domain.Appointment;
-import lestharkin.domain.Customer;
+import lestharkin.domain.Bean;
 
-public interface AppointmentControllerPort {
-  public Appointment openAppointment(Customer customer, Date date, String description);
+public interface AppointmentControllerPort extends Serializable {
+  public Bean<Appointment, String> openAppointment(Appointment appointment);
 
-  public boolean closeAppointmentById(String id);
+  public Bean<Appointment, String> getAppointmentById(String id);
 
-  public boolean cancelAppointmentById(String id);
+  public Bean<Boolean, String> cancelAppointmentById(String id);
 
-  public Appointment getAppointmentById(String id);
+  public Bean<ILinkedList<Appointment>, String> getAppointments();
 
-  public Appointment[] getAppointments();
-
+  public Bean<Boolean, String> closeAppointmentById(String id);
 }

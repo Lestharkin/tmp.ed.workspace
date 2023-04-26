@@ -1,37 +1,49 @@
 package lestharkin.app.controller;
 
-import java.io.Serializable;
-import java.util.Date;
-
+import lestharkin.interfaces.ILinkedList;
+import lestharkin.app.model.AppointmentModel;
 import lestharkin.app.port.AppointmentControllerPort;
 import lestharkin.domain.Appointment;
-import lestharkin.domain.Customer;
-import lestharkin.domain.CustomerType;
+import lestharkin.domain.Bean;
 
-public class AppointmentController implements AppointmentControllerPort, Serializable {
+public class AppointmentController implements AppointmentControllerPort {
+  private AppointmentModel appointmentModel;
 
-  public Appointment openAppointment(Customer customer, Date date, String description) {
-    return null;
+  public AppointmentController(AppointmentModel appointmentModel) {
+    this.appointmentModel = appointmentModel;
   }
 
-  public boolean closeAppointmentById(String id) {
-    return false;
+  public Bean<Appointment, String> openAppointment(Appointment appointment) {
+    Appointment appModel = this.appointmentModel.openAppointment(appointment);
+    if (appModel == null) {
+      return new Bean<>(null, "501");
+    }
+    return new Bean<>(appModel, "200");
   }
 
-  public boolean cancelAppointmentById(String id) {
-    return false;
+  public Bean<Appointment, String> getAppointmentById(String id) {
+    Appointment appModel = appointmentModel.getAppointmentById(id);
+    if (appModel == null) {
+      return new Bean<>(null, "501");
+    }
+    return new Bean<>(appModel, "200");
   }
 
-  public Appointment getAppointmentById(String id) {
-    return new Appointment(
-        id,
-        new Customer("test1", "John", "Doe", "jhon@test.com", new Date(), new CustomerType(0, "Regular")),
-        new Date(),
-        "Test appointment");
+  public Bean<Boolean, String> cancelAppointmentById(String id) {
+    boolean appModel = appointmentModel.cancelAppointmentById(id);
+    return new Bean<>(appModel, "200");
   }
 
-  public Appointment[] getAppointments() {
-    return null;
+  public Bean<ILinkedList<Appointment>, String> getAppointments() {
+    ILinkedList<Appointment> appointmentList = appointmentModel.getAppointments();
+    if (appointmentList == null || appointmentList.size() < 1) {
+      return new Bean<>(null, "501");
+    }
+    return new Bean<>(appointmentList, "200");
   }
 
+  public Bean<Boolean, String> closeAppointmentById(String id) {
+    boolean appModel = appointmentModel.closeAppointmentById(id);
+    return new Bean<>(appModel, "200");
+  }
 }
