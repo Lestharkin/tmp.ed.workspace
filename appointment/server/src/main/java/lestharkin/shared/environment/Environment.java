@@ -21,7 +21,7 @@ public class Environment {
   }
   
     private String getPathProperties() {
-      return "D:\\Users\\lesth\\Home\\Projects\\edu\\java\\lectures\\issues\\i007-appointment\\server\\env\\env-win.properties";
+      return "/home/lestharkin/Projects/edu/java/lectures/issues/i007-appointment/server/env/env-linux.properties";
     }
   
   private void loadVariables(String path) {

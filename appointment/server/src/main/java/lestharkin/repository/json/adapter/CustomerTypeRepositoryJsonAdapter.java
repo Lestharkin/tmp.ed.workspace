@@ -14,7 +14,7 @@ import lestharkin.shared.file.json.adapter.FileJsonAdapter;
 import lestharkin.shared.file.port.FilePort;
 
 public class CustomerTypeRepositoryJsonAdapter implements CustomerTypeRepositoryPort<CustomerType> {
-  private static final String PATH = Environment.getInstance().getVariables().get("DBPATH") + "customerType.json";
+  private static final String PATH = Environment.getInstance().getVariables().get("DBPATH") + "customertype.json";
 
   @Override
   public CustomerType getById(String id) {
